@@ -1,0 +1,209 @@
+
+        /* Reset some default styling */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* Apply a basic styling to the cart template */
+.template-cart {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.table-cart {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-cart th,
+.table-cart td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-cart th.image,
+.table-cart th.name,
+.table-cart th.price,
+.table-cart th.quantity {
+    width: 15%;
+}
+
+.table-cart th.price,
+.table-cart td.price {
+    width: 20%;
+}
+
+.table-cart th.name,
+.table-cart td.name {
+    text-align: left;
+}
+
+.table-cart th.image img {
+    max-width: 100px;
+    height: auto;
+}
+
+.table-cart td.quantity input {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+.table-cart td.delete {
+    width: 10%;
+}
+
+/* Style the delete button */
+.delete-button {
+    background-color: #ff5757;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button.pull-right {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    float: right;
+    margin-left: 10px;
+}
+
+.button.pull-right:hover {
+    background-color: #0056b3;
+}
+
+.button.pull-left {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    float: left; /* Tương tự pull-left */
+}
+.button.pull-right.black {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    float: right; /* Tương tự pull-right */
+}
+.button.pull-right.black {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    float: right; /* Tương tự pull-right */
+}
+.total-cart {
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.total-cart strong {
+    font-size: 18px;
+}
+
+.total-cart p {
+    margin: 0;
+    font-size: 14px;
+}
+.button.black {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.button.black:hover {
+    background-color: #222;
+}
+.pull-right {
+    float: right;
+}
+
+.black-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+

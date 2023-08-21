@@ -1,0 +1,60 @@
+
+    
+
+    
+
+body{
+  width: 400px;
+  height: 600px;
+  margin: auto;
+}
+.template-customer {
+    padding: 30px; /* Khoảng cách viền ngoài */
+    background-color: #f5f5f5; /* Màu nền */
+    border: 1px solid #ddd; /* Viền xung quanh */
+    border-radius: 5px; /* Góc bo tròn */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+}
+
+/* Định nghĩa kiểu dáng cho phần tử có lớp "title" bên trong "template-customer" */
+.template-customer .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Định nghĩa kiểu dáng cho các nút và ô nhập liệu bên trong "template-customer" */
+.template-customer .button,
+.template-customer .input-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Định nghĩa kiểu dáng cho nút "Đăng nhập" */
+.template-customer .button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.template-customer .button:hover {
+    background-color: #0056b3;
+}
+
+/* Định nghĩa kiểu dáng cho nút "Đăng ký" */
+.template-customer a.button {
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.template-customer a.button:hover {
+    background-color: #218838;
+}
