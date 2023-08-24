@@ -20,7 +20,7 @@ class CategoryRepository
         if ($category) {
             return $category->name;
         }
-        return null; // hoặc trả về giá trị mặc định nếu không tìm thấy
+        return null; 
     }
     public function createCategory($categoryData)
     {

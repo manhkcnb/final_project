@@ -33,7 +33,7 @@
     <div class="checklist ">
     	<ul>
         	@php
-            $category=\App\Http\Controllers\Frontend\indexController::getCategory();
+            $category=DB::table("category")->get();
             @endphp
             @foreach($category as $row)
             <li><a href="{{url('category/'.$row->id)}}"><span></span>{{$row->name}}</a></li>
@@ -44,7 +44,7 @@
     <h3>COLORS</h3>
     <div class="checklist colors">
         @php
-            $color=\App\Http\Controllers\Frontend\indexController::getColor();
+            $color=DB::table("colors")->get();
             $check=ceil(count($color)/2);
         @endphp
     	<ul>
@@ -69,7 +69,7 @@
     
     <h3>SIZES</h3>
     @php
-        $size=\App\Http\Controllers\Frontend\indexController::getSize();
+        $size=DB::table("size")->get();
         $check=ceil(count($size)/2);
     @endphp
     <div class="checklist sizes">

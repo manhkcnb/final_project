@@ -4,38 +4,54 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use App\Service\Frontend\IndexService;
 
-class indexController extends Controller
+class IndexController extends Controller
 {
-    //
-   
-    public function index(){
-        return view("frontend.index");
+    protected $indexService;
+
+    public function __construct(IndexService $indexService) {
+        $this->indexService = $indexService;
     }
-    public static function getCategory(){
-        $getCategory=DB::table("category")->orderBy("id","desc")->get();
-        return $getCategory;
-    }public static function getColor(){
-        $getColor=DB::table("colors")->orderBy("id","desc")->get();
-        return $getColor;
-    }public static function getProduct(){
-        $getColor=DB::table("products")->orderBy("id","asc")->paginate(12);
-        return $getColor;
-    }public static function readCategory($category_id){
-        $category=DB::table("category")->where("id","=",$category_id)->first();
-        return $category;
-    }public static function getSize(){
-         $getSize=DB::table("size")->orderBy("id","desc")->get();
-        return $getSize;
-    }public static function product_if($id){
-        $product_if=DB::table("product_if")->where("product_id","=",$id)->orderBy("id","asc")->get();
-        return $product_if;
-    }public static function getsColor($id){
-        $getColor=DB::table("colors")->where("id","=",$id)->orderBy("id","asc")->first();
-        return $getColor;
-    }public static function getsSize($id){
-        $getSize=DB::table("size")->where("id","=",$id)->orderBy("id","asc")->first();
-        return $getSize;
+    public  function getProduct() {
+        $products = $this->indexService->getProduct();
+        return view("frontend.products", ["products" => $products]);
+    }
+
+
+    public  function  getCategory() {
+        $categories = $this->indexService->getCategory();
+        return view("frontend.categories", ["categories" => $categories]);
+    }
+
+    public   function getColor() {
+        $colors = $this->indexService->getColor();
+        return view("frontend.colors", ["colors" => $colors]);
+    }
+
+   
+    public  function readCategory($category_id) {
+        $category = $this->indexService->readCategory($category_id);
+        return view("frontend.category_detail", ["category" => $category]);
+    }
+
+    public  function getSize() {
+        $sizes = $this->indexService->getSize();
+        return view("frontend.sizes", ["sizes" => $sizes]);
+    }
+
+    public  function getProductIf($id) {
+        $productIf = $this->indexService->getProductIf($id);
+        return view("frontend.product_if", ["productIf" => $productIf]);
+    }
+
+    public  function getColorById($id) {
+        $color = $this->indexService->getColorById($id);
+        return view("frontend.color_detail", ["color" => $color]);
+    }
+
+    public  function getSizeById($id) {
+        $size = $this->indexService->getSizeById($id);
+        return view("frontend.size_detail", ["size" => $size]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +15,10 @@ class Product extends Model
 
     protected $fillable = ['name', 'category_id', 'price', 'photo'];
     protected $dates = ['deleted_at'];
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
    
 }

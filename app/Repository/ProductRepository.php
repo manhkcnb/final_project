@@ -1,7 +1,7 @@
 <?php 
 namespace App\Repository;
 
-use App\Models\Admin\Product;
+use App\Models\Product;
 
 class ProductRepository
 {

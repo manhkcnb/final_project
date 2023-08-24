@@ -27,10 +27,9 @@ Route::get('backend/logout', function () {
     Auth::logout();
     return redirect(url('backend/login'));
 });
+use App\Http\Controllers\Frontend\IndexController;
 
-Route::get('/', function () {
-    return view('frontend/products');
-});
+Route::get('/', [IndexController::class,'getProduct']);
 Route::get('backend', function () {
     return view('admin.home.read');
 })->middleware("check_login");
@@ -107,7 +106,7 @@ Route::post("backend/detailPost",[DetailController::class,'detailPost']);
 
 
 
-use App\Http\Controllers\Frontend\productController as ProductFrontend;
+use App\Http\Controllers\Frontend\ProductController as ProductFrontend;
 Route::get("/search",[ProductFrontend::class,'search']);
 Route::get("/searchPrice",[ProductFrontend::class,'searchPrice']);
 Route::get('detail/{id}',[ProductFrontend::class,'detail']);

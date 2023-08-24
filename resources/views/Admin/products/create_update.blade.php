@@ -1,5 +1,5 @@
 @extends("admin.layout")
-@section("do-du-lieu-tu-view")
+@section("admin-view")
 	<div class="col-md-12">  
 	    <div class="panel panel-primary">
 	        <div class="panel-heading">Add edit</div>
