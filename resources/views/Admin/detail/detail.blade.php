@@ -22,10 +22,8 @@
 
                                 
                                 <h4 class="product-description">
-                                    @php
-                                    $category=\App\Http\Controllers\Frontend\indexController::readCategory($data->category_id);
-                                    @endphp
-                                    Hãng: {{$category->name}}
+                                    
+                                    Hãng: {{$data->category->name}}
                                 </h4>
                                 
                                 <h4 class="price">Giá hiện tại: <span>{{number_format($data->price)}} vnđ</span></h4>
@@ -35,7 +33,7 @@
                                 	
                                 	<select name="size">
                                 		@php
-                                		$sizes=\App\Http\Controllers\Frontend\indexController::getSize();
+                                		$sizes=DB::table("size")->get();
                                 		@endphp
                                 		@foreach($sizes as $row)
                                 		<option  @if(isset($size)&& $row->name==$size) selected @endif  value="{{$row->name}}" > {{$row->name}}</option>
@@ -48,9 +46,9 @@
                                 <h5 class="colors" >Color:
                                 	<select name="color">
                                 		@php
-                                		$size=\App\Http\Controllers\Frontend\indexController::getColor();
+                                		$colors=DB::table("colors")->get();
                                 		@endphp
-                                		@foreach($size as $row)
+                                		@foreach($colors as $row)
                                 		<option @if(isset($color)&& $row->name==$color) selected @endif value="{{$row->name}}"> {{$row->name}}</option>
                                 		@endforeach
                                 	</select>

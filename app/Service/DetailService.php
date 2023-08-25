@@ -28,12 +28,9 @@ class DetailService
         return response()->json(['quantity' => $quantity]);
     }
 
-    public function updateProductQuantity(Request $request)
+    public function updateProductQuantity($name,$size,$color,$quantity)
     {
-        $name = $request->input("name");
-        $size = $request->input('size');
-        $color = $request->input('color');
-        $quantity = $request->input("quantity");
+        
 
         return $this->detailRepository->updateProductQuantity($name, $size, $color, $quantity);
     }

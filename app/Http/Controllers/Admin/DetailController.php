@@ -27,7 +27,12 @@ class DetailController extends Controller
     }
 
     public function detailPost(Request $request)
-    {
-        return $this->detailService->updateProductQuantity($request);
+
+    {   
+        $name = $request->input("name");
+        $size = $request->input('size');
+        $color = $request->input('color');
+        $quantity = $request->input("quantity");
+        return $this->detailService->updateProductQuantity($name,$size,$color,$quantity);
     }
 }

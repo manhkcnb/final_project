@@ -10,4 +10,9 @@ class Size extends Model
     // use HasFactory;
     protected $table = 'size';
     protected $fillable = ['name'];
+    public $timestamps = false;
+    public function product_if()
+    {
+        return $this->hasMany(Product_if::class);
+    }
 }

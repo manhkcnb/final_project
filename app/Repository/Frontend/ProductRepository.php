@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 namespace App\Repository\Frontend;
 
 use App\Models\Product;

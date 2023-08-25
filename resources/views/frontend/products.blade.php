@@ -95,13 +95,50 @@
                         <p>
                             
                             {{$row->category->name}}
-                        </p>                                            
+                        </p> 
+                        <div class="product-options">
+                        @php
+                            $product_if=$row->product_if;
+                            $printedSizes = [];
+                            $printColor = [];
+                        @endphp
+                        @if($product_if)
+                            <strong>SIZES</strong>
+                            <div style="display:flex;"> 
+                            @foreach($product_if as $key)
+                            
+                            @if (!in_array($key->size->name, $printedSizes))
+                                <div style="margin-right: 2px">{{$key->size->name}} </div>
+                                @php
+                                    $printedSizes[] = $key->size->name;
+                                @endphp
+                            @endif
+                            @endforeach
+                            </div>
+                            <strong>COLORS</strong>
+                        
+                            <div class="colors">
+                                @foreach($product_if as $key)
+                                
+                                @if(!in_array($key->color->code,$printColor))
+                                    <div style="background:{{$key->color->code}};border: 0.1px solid grey;"><span></span></div>
+                                    @php
+                                        $printColor[] = $key->color->code;
+                                    @endphp
+                                @endif
+                                @endforeach
+                                
+                            </div>
+                        @endif
+                       
+                    </div>
+                                                        
                         
                                                
                     </div>                         
                 </div>
             </div>
-            
+           
             <div class="product-back">
                 <div class="shadow"></div>
                 <div class="carousel">

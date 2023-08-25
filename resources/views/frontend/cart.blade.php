@@ -17,7 +17,7 @@
                 <thead>
                   <tr>
                     <th class="image">Photo</th>
-                    <th class="name">Name</th>
+                    <th class="name" style="width:300px;">Name</th>
                     <th>Color</th>
                     <th>Size</th>
 
@@ -45,8 +45,8 @@
                      </a>
                   </td>
                   
-                  <td>
-                   <a href="{{ url('detail/'.$data->id)}}">{{$product['name']}}</a></td>
+                  <td >
+                   <a href="{{ url('detail/'.$data->id)}}" >{{$product['name']}}</a></td>
                   <td>{{$product['color']}}</td>
                   <td>{{$product['price']}}</td>
                   <td>{{$product['size']}}</td>

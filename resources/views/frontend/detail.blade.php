@@ -47,47 +47,39 @@
                                 <h3 class="product-title">{{$data->name}}</h3>
                                 
                                 <p class="product-description">
-                                    @php
-                                    $category=\App\Http\Controllers\Frontend\indexController::readCategory($data->category_id);
-                                    @endphp
-                                    Category: {{$category->name}}
+                                     Category :{{$data->category->name}}
                                 </p>
                                 
                                 <h4 class="price">Price: <span>{{number_format($data->price)}} vnđ</span></h4>
-                                
-                                 @php
-                                    $product_if=\App\Http\Controllers\Frontend\indexController::product_if($data->id);
+                                @php
+                                    $product_if=$data->product_if;
                                     $printedSizes = [];
                                     $printColor = [];
-                                  @endphp
+                                @endphp
                                 <h5 class="sizes">sizes:
                                     @foreach($product_if as $key)
-                                        @php
-                                            $sizes = \App\Http\Controllers\Frontend\indexController::getsSize($key->size_id);
-                                        @endphp
-                                        @if (!in_array($sizes->name, $printedSizes))
+                            
+                                    @if (!in_array($key->size->name, $printedSizes))
                                         
-                                        <input type="radio" id="size_{{$sizes->name}}" class="size-button" name="size" value="{{$sizes->name}}">
-                                        <label class="size-label" for="size_{{$sizes->name}}">{{$sizes->name}}</label>
+                                        <input type="radio" id="size_{{$key->size->name}}" class="size-button" name="size" value="{{$key->size->name}}">
+                                        <label class="size-label" for="size_{{$key->size->name}}">{{$key->size->name}}</label>
                                             @php
-                                                $printedSizes[] = $sizes->name;
+                                                $printedSizes[] = $key->size->name;
                                             @endphp
-                                        @endif
+                                    @endif
                                     @endforeach
                                 </h5>
                                 
                                 <h6 class="colors" >colors:
-                                     @foreach($product_if as $key)
-                                    @php
-                                        $colors=\App\Http\Controllers\Frontend\indexController::getsColor($key->color_id);
-                                    @endphp
-                                    @if(!in_array($colors->code,$printColor))
-                                        <label style="background:{{$colors->code}};border: 0.1px solid grey; display: inline-block; padding: 10px; ">
-                                                <input type="radio" class="size-button" name="color" value="{{$colors->name}}">
+                                    @foreach($product_if as $key)
+                                
+                                    @if(!in_array($key->color->code,$printColor))
+                                        <label style="background:{{$key->color->code}};border: 0.1px solid grey; display: inline-block; padding: 10px; ">
+                                                <input type="radio" class="size-button" name="color" value="{{$key->color->name}}">
                                         </label>
                                         
                                         @php
-                                            $printColor[] = $colors->code;
+                                            $printColor[] = $key->color->code;
                                         @endphp
                                     @endif
                                     @endforeach
