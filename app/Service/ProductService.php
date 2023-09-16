@@ -46,6 +46,10 @@ class ProductService
     {
         $this->productRepository->deleteProducts($ids);
     }
+    public function forceDelete($id)
+    {
+        $this->productRepository->forceDelete($id);
+    }
 
     public function searchByKey($key)
     {

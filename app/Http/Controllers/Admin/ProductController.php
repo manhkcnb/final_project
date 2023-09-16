@@ -24,7 +24,7 @@ class ProductController extends Controller
         foreach ($data as $product) {
             $product->category_name = $categoryService->getCategoryNameById($product->category_id);
         }
-        return view("Admin.products.read", compact("data"));
+        return  response()->json($data);
     }
     
 
@@ -36,14 +36,15 @@ class ProductController extends Controller
          foreach ($data as $product) {
             $product->category_name = $categoryService->getCategoryNameById($product->category_id);
         }
-        return view("Admin.products.read", compact("data", "soluong"));
+       return  response()->json($data);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,CategoryService $categoryService)
     {
         $record = $this->productService->getProductById($id);
         $action = url("backend/products/updatePost/" . $id);
-        return view("Admin.products.create_update", ["record" => $record, "action" => $action]);
+        $record->category_name=$categoryService->getCategoryNameById($record->category_id);
+        return  response()->json($record);
     }
 
     public function updatePost(Request $request, $id)
@@ -57,13 +58,13 @@ class ProductController extends Controller
 
         $this->productService->updateProduct($id, $data);
 
-        return redirect(url('backend/products'));
+        // return redirect(url('backend/products'));
     }
 
     public function create(Request $request)
     {
         $action = url("backend/products/createPost");
-        return view("Admin.products.create_update", ["action" => $action]);
+        // return view("Admin.products.create_update", ["action" => $action]);
     }
 
     public function createPost(Request $request)
@@ -77,44 +78,55 @@ class ProductController extends Controller
 
         $this->productService->createProduct($data);
 
-        return redirect(url('backend/products'));
+        // return redirect(url('backend/products'));
     }
 
     public function delete(Request $request, $id)
     {
         $this->productService->deleteProduct($id);
-        return redirect(url('backend/products'));
+        // return redirect(url('backend/products'));
     }
 
     public function deleteItems(Request $request)
     {
-        $items = $request->input('items', []);
-        $this->productService->deleteProducts($items);
-        return redirect(url('backend/products'));
+        
+        $data = json_decode($request->getContent(), true);
+        $k=[];
+        foreach($data as $row){
+            $k[]=$row['id'];
+        }
+        $this->productService->deleteProducts($k);
+        // return response()->json($data);
+        // return redirect(url('backend/products'));
     }
 
     public function searchKey(Request $request)
-    {
-        $key = $request->input("key");
+    {   $key=json_decode($request->getContent(), true);
+        // $key = $request->input("searchParams");
         $data = $this->productService->searchByKey($key);
-        return view("admin.products.searchKey", ["data" => $data, "key" => $key]);
+        // return view("admin.products.searchKey", ["data" => $data, "key" => $key]);
+        return  response()->json($data);
     }
 
-    public function allSoftDeleted(Request $request)
+    public function allSoftDeleted(Request $request,CategoryService $categoryService)
     {
         $data = $this->productService->allSoftDeleted();
-        return view("admin.products.allSoftDeleted", ["data" => $data]);
+        foreach ($data as $product) {
+            $product->category_name = $categoryService->getCategoryNameById($product->category_id);
+        }
+        // return view("admin.products.allSoftDeleted", ["data" => $data]);
+        return response()->json($data);
     }
 
     public function restore($id)
     {
         $this->productService->restoreProduct($id);
-        return redirect(url('backend/products/allSoftDeleted'));
+        // return redirect(url('backend/products/allSoftDeleted'));
     }
 
     public function deletes(Request $request, $id)
     {
-        $this->productService->deleteProducts($id);
-        return redirect(url('backend/products/allSoftDeleted'));
+        $this->productService->forceDelete($id);
+        // return redirect(url('backend/products/allSoftDeleted'));
     }
 }

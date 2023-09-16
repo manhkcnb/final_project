@@ -7,7 +7,7 @@ class ProductRepository
 {
     public function getAllProducts()
     {
-        return Product::orderBy('id', 'desc')->paginate(50);
+        return Product::orderBy('id', 'desc')->get();
     }
 
     public function getProductsByItems($soluong)
@@ -40,6 +40,13 @@ class ProductRepository
             $product->delete();
         }
     }
+    public function forceDelete($id)
+    {
+        $product = Product::withTrashed()->find($id);
+        if ($product) {
+            $product->forceDelete();
+        }
+    }
 
     public function deleteProducts($ids)
     {
@@ -48,14 +55,16 @@ class ProductRepository
 
     public static function getCategoryName($category_id)
     {
-        // Chuyển phần này sang Model Category nếu cần
+       
         $record = DB::table("category")->where("id", "=", $category_id)->first();
         return $record->name;
     }
 
     public function searchByKey($key)
     {
-        return Product::where("name", "like", '%' . $key . '%')->paginate(10);
+        
+        if($key!='') return Product::where("name", "like",'%'.$key.'%')->get();
+        else return Product::get();
     }
 
     public static function allSoftDeleted()

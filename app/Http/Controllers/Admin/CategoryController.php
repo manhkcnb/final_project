@@ -18,14 +18,14 @@ class CategoryController extends Controller
     public function read(Request $request)
     {
         $data = $this->categoryService->getAllCategories();
-        return view("admin.categories.read", compact("data"));
+        return  response()->json($data);
     }
 
     public function update(Request $request, $id)
     {
         $record = $this->categoryService->getCategoryById($id);
         $action = url('backend/category/updatePost/'.$id);
-        return view("admin.categories.create_update", ["record" => $record, "action" => $action]);
+        return  response()->json($record);
     }
 
     public function updatePost(Request $request, $id)
@@ -36,13 +36,13 @@ class CategoryController extends Controller
 
         $this->categoryService->updateCategory($id, $categoryData);
 
-        return redirect(url('backend/category'));
+        // return redirect(url('backend/category'));
     }
 
     public function create(Request $request)
     {
         $action = url('backend/category/createPost');
-        return view("admin.categories.create_update", ["action" => $action]);
+        // return view("admin.categories.create_update", ["action" => $action]);
     }
 
     public function createPost(Request $request)
@@ -53,12 +53,12 @@ class CategoryController extends Controller
 
         $this->categoryService->createCategory($categoryData);
 
-        return redirect(url('backend/category'));
+        // return redirect(url('backend/category'));
     }
 
     public function delete(Request $request, $id)
     {
         $this->categoryService->deleteCategory($id);
-        return redirect(url('backend/category'));
+        // return redirect(url('backend/category'));
     }
 }

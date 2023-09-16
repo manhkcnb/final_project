@@ -7,7 +7,7 @@ class UserRepository
 {
     public function getAllUsers()
     {
-        return User::orderBy('id', 'desc')->paginate(5);
+        return User::orderBy('id', 'asc')->get();
     }
 
     public function getUserById($id)

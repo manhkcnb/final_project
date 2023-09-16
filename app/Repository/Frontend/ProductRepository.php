@@ -1,12 +1,13 @@
- <?php 
-namespace App\Repository\Frontend;
+<?php 
+namespace App\Repository\Frontend; 
 
 use App\Models\Product;
 use App\Models\ProductIf;
 
 class ProductRepository {
     public function searchByName($key, $perPage) {
-        return Product::where("name", "like", '%' . $key . '%')->paginate($perPage);
+        if($key!='') return Product::where("name", "like", '%' . $key . '%')->paginate($perPage);
+        else return Product::paginate($perPage);
     }
 
     public function searchByPriceRange($min, $max, $perPage) {

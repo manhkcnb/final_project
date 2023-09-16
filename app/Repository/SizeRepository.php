@@ -9,7 +9,7 @@ class SizeRepository
 {
     public function getAllSizes()
     {
-        return Size::orderBy('id', 'asc')->paginate(5);
+        return Size::orderBy('id', 'asc')->get();
     }
 
     public function getById($id)

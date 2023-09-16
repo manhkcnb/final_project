@@ -7,7 +7,7 @@ class ColorRepository
 {
     public function getAllColors()
     {
-        return Color::orderBy('id', 'asc')->paginate(10);
+        return Color::orderBy('id', 'asc')->get();
     }
 
     public function getColorById($id)

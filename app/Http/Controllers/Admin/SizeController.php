@@ -18,21 +18,21 @@ class SizeController extends Controller
     public function read(Request $request)
     {
         $data = $this->sizeService->getAllSizes();
-        return view("Admin.size.read", compact("data"));
+        return  response()->json($data);
     }
 
     public function update(Request $request, $id)
     {
         $record = $this->sizeService->getById($id);
         $action = url("backend/size/updatePost/" . $id);
-        return view("Admin.size.create_update", ["record" => $record, "action" => $action]);
+       return  response()->json($record);
     }
 
     public function updatePost(Request $request, $id)
     {
         $data = ["name" => $request->input("name")];
         $this->sizeService->update($id, $data);
-        return redirect(url('backend/size'));
+        // return redirect(url('backend/size'));
     }
 
     public function create(Request $request)
@@ -45,7 +45,7 @@ class SizeController extends Controller
     {
         $data = ["name" => $request->input("name")];
         $this->sizeService->create($data);
-        return redirect(url('backend/size'));
+        // return redirect(url('backend/size'));
     }
 
     public function delete(Request $request, $id)
@@ -55,7 +55,7 @@ class SizeController extends Controller
         // ...
 
         $this->sizeService->delete($id);
-        return redirect(url('backend/size'));
+        // return redirect(url('backend/size'));
     }
 }
 

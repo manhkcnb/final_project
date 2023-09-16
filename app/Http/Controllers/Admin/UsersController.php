@@ -18,14 +18,17 @@ class UsersController extends Controller
     public function read(Request $request)
     {
         $data = $this->userService->getAllUsers();
-        return view("admin.users.read", compact('data'));
+        return  response()->json($data);
+        // return view("admin.users.read", compact('data'));
+        // return $data;
     }
 
     public function update(Request $request, $id)
     {
         $record = $this->userService->getUserById($id);
         $action = url('backend/users/update-post/'.$id);
-        return view("admin.users.create_update", ["record" => $record, "action" => $action]);
+        // return view("admin.users.create_update", ["record" => $record, "action" => $action]);
+        return response()->json($record);
     }
 
     public function updatePost(Request $request, $id)
@@ -38,13 +41,13 @@ class UsersController extends Controller
 
         $this->userService->updateUser($id, $userData);
 
-        return redirect(url('backend/users'));
+        // return redirect(url('backend/users'));
     }
 
     public function create(Request $request)
     {
         $action = url('backend/users/create-post');
-        return view("admin.users.create_update", ["action" => $action]);
+        // return view("admin.users.create_update", ["action" => $action]);
     }
 
     public function createPost(Request $request)
@@ -53,16 +56,19 @@ class UsersController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
+            'role'=>'3'
+              
         ];
 
         $this->userService->createUser($userData);
+        
 
-        return redirect(url('backend/users'));
+         // return redirect(url('backend/users'));
     }
 
     public function delete(Request $request, $id)
     {
         $this->userService->deleteUser($id);
-        return redirect(url('backend/users'));
+        // return redirect(url('backend/users'));
     }
 }

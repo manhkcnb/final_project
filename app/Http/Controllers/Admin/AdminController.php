@@ -21,14 +21,17 @@ class AdminController extends Controller
     }
 
     public function loginPost(Request $request)
-    {
-        $email = $request->input("email");
-        $password = $request->input("password");
+     {
+        $requestData = json_decode(file_get_contents("php://input"));
+        $email=$requestData->email;
+        $password=$requestData->password;
+         
 
         if ($this->adminService->authenticate($email, $password)) {
-            return view('admin.home.read');
+            // return view('admin.home.read');
+            return response()->json("done");
         } else {
-            return redirect(url('backend/login?notify=invalid'));
+            return response()->json("not");
         }
     }
 
@@ -39,23 +42,25 @@ class AdminController extends Controller
 
     public function forgotPasswordPost(Request $request)
     {
-        $email = $request->input("email");
+        $requestData = json_decode(file_get_contents("php://input"));
+        $email=$requestData->email;
 
         
         if ($this->adminService->sendRecoveryCode($email)) {
-            return view("admin.login.resetpass", ['email' => $email]);
+            return response()->json("done");
+            // return view("admin.login.resetpass", ['email' => $email]);
         } else {
             return "No email address";
         }
     }
 
     public function resetPassword(Request $request)
-    {
-        $code = $request->input("code");
-        $email = $request->input("email");
+    {   $requestData = json_decode(file_get_contents("php://input"));
+        $code = $requestData->code;
+        $email = $requestData->email;
         
         if ($this->adminService->isValidRecoveryCode($email, $code)) {
-            return view("admin.login.password_new", ["email" => $email]);
+            return response()->json("done");
         } else {
             return "Wrong code";
         }
@@ -63,11 +68,12 @@ class AdminController extends Controller
 
     public function passwordNew(Request $request)
     {
-        $password = $request->input("password");
-        $email = $request->input("email");
+        $requestData = json_decode(file_get_contents("php://input"));
+        $password = $requestData->password;
+        $email = $requestData->email;
         
         if ($this->adminService->updatePassword($email, $password)) {
-            return view("admin.login.form_login");
+            return response()->json("done");
         } else {
             return "Failed to update password";
         }

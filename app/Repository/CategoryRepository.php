@@ -7,7 +7,7 @@ class CategoryRepository
 {
     public function getAllCategories()
     {
-        return Category::orderBy('id', 'asc')->paginate(10);
+        return Category::orderBy('id', 'asc')->get();
     }
 
     public function getCategoryById($id)

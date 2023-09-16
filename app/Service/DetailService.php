@@ -18,21 +18,20 @@ class DetailService
         return $this->detailRepository->getProductDetail($id);
     }
 
-    public function getProductQuantity()
+    public function getProductQuantity($size,$color,$name)
     {
-        $size = request()->input('size');
-        $color = request()->input('color');
         
-        $quantity = $this->detailRepository->getProductQuantity($size, $color);
+        $quantity = $this->detailRepository->getProductQuantity($size, $color,$name);
 
-        return response()->json(['quantity' => $quantity]);
+        return $quantity;
     }
 
     public function updateProductQuantity($name,$size,$color,$quantity)
     {
         
 
-        return $this->detailRepository->updateProductQuantity($name, $size, $color, $quantity);
+        $this->detailRepository->updateProductQuantity($name, $size, $color, $quantity);
+
     }
 }
 
