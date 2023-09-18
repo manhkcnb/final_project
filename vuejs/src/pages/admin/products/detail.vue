@@ -12,11 +12,9 @@
                 <h3 class="product-title">
                   {{ productsData.name }}
                 </h3>
-
                 <h4 class="product-description">
                   Category:{{ productsData.category_name }}
                 </h4>
-
                 <h4 class="price">
                   Price: {{ productsData.price }} <span> vnđ</span>
                 </h4>
@@ -154,7 +152,6 @@ export default defineComponent({
         )
         .then(function (response) {
           quantity.value = response.data;
-          console.log(quantity.value);
         })
         .catch(function (error) {
           // handle error

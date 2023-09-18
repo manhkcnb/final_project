@@ -76,17 +76,13 @@
             `http://localhost/intern/web_intern/public/api/backend/category/update/${categoryId}`
           )
           .then(function (response) {
-            // Xử lý dữ liệu người dùng được trả về từ máy chủ
-            const category = response.data; // Giả sử dữ liệu người dùng trả về có cấu trúc { name, email, password }
+            const category = response.data; 
             categoryData.name = category.name;
           })
           .catch(function (error) {
-            // Xử lý lỗi
             console.log(error);
           });
       };
-  
-      // Gọi hàm để lấy dữ liệu người dùng khi component được tạo
       onMounted(() => {
         getcategoryData();
       });

@@ -112,8 +112,6 @@ export default defineComponent({
         .get("http://localhost/intern/web_intern/public/api/backend/category")
         .then(function (response) {
           categories.value = response.data;
-          console.log(categories);
-          console.log(1);
         })
         .catch(function (error) {
           // handle error

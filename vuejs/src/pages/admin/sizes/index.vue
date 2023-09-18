@@ -33,7 +33,6 @@ const getUsers = () => {
     })
     .catch(function (error) {
       console.error("Error fetching user data:", error);
-      console.log("lỗi"); // Xử lý lỗi nếu cần
     });
 };
 
@@ -57,18 +56,14 @@ const deleteUser = () => {
         getUsers();
       })
       .catch((error) => {
-        // Xử lý lỗi nếu cần
       });
     hideConfirmModal();
   }
 };
-
 onMounted(() => {
   getUsers();
 });
 </script>
-
-
 <template>
   <div id="page-wrapper" style="padding-top: 20px">
     <div class="row">
@@ -94,9 +89,6 @@ onMounted(() => {
         :rows="3"
         :rowsPerPageOptions="[5, 10, 20, 50]"
         style="width: 70%;"
-       
-       
-        
       >
         <Column field="id" header="Id" style="width: 20%;"></Column>
         <Column field="name" header="Name" style="width: 60%;"></Column>

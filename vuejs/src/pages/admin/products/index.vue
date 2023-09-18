@@ -3,15 +3,11 @@ import { ref, onMounted, computed, toRefs, reactive } from "vue";
 import axios from "axios";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-
-import { FilterMatchMode, FilterOperator } from "primevue/api";
-
 const products = ref([]);
 const confirmModalVisible = ref(false);
 const check = ref(false);
 const selectedProduct = ref([]);
 const productsToDelete = ref(null);
-
 const columns = [
   {
     title: "id",
@@ -75,7 +71,6 @@ const search = () => {
       products.value = response.data;
     })
     .catch((error) => {
-      // Xử lý lỗi nếu cần
     });
 };
 const showConfirmModal = (products) => {
@@ -105,7 +100,6 @@ const deleteProducts = () => {
         getProducts();
       })
       .catch((error) => {
-        // Xử lý lỗi nếu cần
       });
     hideConfirmModal();
   }
@@ -128,7 +122,6 @@ const deleteAllProducts = () => {
       getProducts();
     })
     .catch((error) => {
-      // Xử lý lỗi nếu cần
     });
   hideConfirmModal();
 };

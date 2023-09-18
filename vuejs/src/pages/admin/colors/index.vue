@@ -1,12 +1,8 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
-import Paginator from "primevue/paginator";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import ColumnGroup from "primevue/columngroup"; // optional
-import Row from "primevue/row";
-
 const users = ref([]);
 const confirmModalVisible = ref(false);
 const userToDelete = ref(null);
@@ -67,8 +63,6 @@ onMounted(() => {
   getUsers();
 });
 </script>
-
-
 <template>
   <div id="page-wrapper" style="padding-top: 20px">
     <div class="row">
@@ -88,21 +82,15 @@ onMounted(() => {
           </router-link>
         </div>
       <DataTable
-        
         :value="users"
         paginator
         :rows="3"
         :rowsPerPageOptions="[5, 10, 20, 50]"
-       
-       
-        
       >
         <Column field="id" header="Id"></Column>
         <Column field="name" header="Name"></Column>
-        
         <Column header="Actions">
           <template #body="rowData">
-            
             <router-link
               :to="{
                 name: 'admin-color-update',

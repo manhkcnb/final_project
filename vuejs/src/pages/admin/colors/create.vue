@@ -3,7 +3,6 @@
     <div class="col-md-12">
       <div class="panel panel-primary">
         <div class="panel-heading">Add edit</div>
-
         <div class="panel-body">
           <form @submit.prevent="createUsers()">
             <!-- rows -->
@@ -19,12 +18,6 @@
                 <a-input placeholder="Input Name" v-model:value="code"  allow-clear />
               </div>
             </div>
-            <!-- end rows -->
-            <!-- rows -->
-          
-
-            <!-- end rows -->
-            <!-- rows -->
             <div class="row" style="margin-top: 5px">
               <div class="col-md-2"></div>
               <div class="col-md-4">
@@ -65,13 +58,10 @@ export default defineComponent({
     const users=reactive({
       name:'',
       code:'',
-      
-    
     })
     return {
       createUsers,
       ...toRefs(users)
-    
     };
   },
   

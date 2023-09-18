@@ -56,9 +56,6 @@
                 />
               </div>
             </div>
-  
-              <!-- end rows -->
-              <!-- rows -->
               <div class="row" style="margin-top: 5px">
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
@@ -80,8 +77,6 @@
   import { useRoute } from "vue-router";
   import axios from "axios";
   import { useRouter } from "vue-router";
-  
-  
   export default defineComponent({
     setup() {
       const categories = ref([]);
@@ -94,10 +89,7 @@
         price: "",
         photo:'',
         category_id: "",
-        
-       
       });
-      
       const editProducts = () => {
         axios
           .post(
@@ -109,18 +101,15 @@
             console.log(response);
           })
           .catch(function (error) {
-            // Xử lý lỗi
             console.log(error);
           });
       };
-  
       const getProductsData = () => {
         axios
           .get(
             `http://localhost/intern/web_intern/public/api/backend/products/update/${productsId}`
           )
           .then(function (response) {
-           
             const products = response.data; 
             productsData.name = products.name;
             productsData.category_name = products.category_name;
@@ -130,7 +119,6 @@
 
           })
           .catch(function (error) {
-            // Xử lý lỗi
             console.log(error);
           });
       };const getCategory = () => {
@@ -142,13 +130,9 @@
           console.log(1);
         })
         .catch(function (error) {
-          // handle error
           console.log(error);
         });
     };
-    
-  
-      // Gọi hàm để lấy dữ liệu người dùng khi component được tạo
       onMounted(() => {
         getProductsData();
         getCategory();

@@ -3,7 +3,6 @@
     <div class="col-md-12">
       <div class="panel panel-primary">
         <div class="panel-heading">Add edit</div>
-
         <div class="panel-body">
           <form @submit.prevent="createUsers()">
             <!-- rows -->

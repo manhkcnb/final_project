@@ -1,16 +1,11 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
-import Paginator from "primevue/paginator";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import ColumnGroup from "primevue/columngroup"; // optional
-import Row from "primevue/row";
-
 const products = ref([]);
 const confirmModalVisible = ref(false);
 const productsToDelete = ref(null);
-
 const columns = [
   {
     title: "id",
@@ -53,7 +48,7 @@ const getProducts = () => {
     })
     .catch(function (error) {
       console.error("Error fetching products data:", error);
-      console.log("lỗi"); // Xử lý lỗi nếu cần
+      console.log("lỗi"); 
     });
 };
 
@@ -77,7 +72,6 @@ const deleteProducts = () => {
         getProducts();
       })
       .catch((error) => {
-        // Xử lý lỗi nếu cần
       });
     hideConfirmModal();
   }
@@ -91,7 +85,6 @@ const restore=(id) =>{
         getProducts();
       })
       .catch((error) => {
-        // Xử lý lỗi nếu cần
       });
     
   
@@ -101,8 +94,6 @@ onMounted(() => {
   getProducts();
 });
 </script>
-
-
 <template>
   <div id="page-wrapper" style="padding-top: 20px">
     <div class="row">
@@ -145,8 +136,6 @@ onMounted(() => {
             >
                 Restore
             </button>
-            
-            
             <button
               type="button"
               class="btn btn-danger"

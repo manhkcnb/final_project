@@ -68,7 +68,6 @@
             console.log(response);
           })
           .catch(function (error) {
-            // Xử lý lỗi
             console.log(error);
           });
       };
@@ -79,18 +78,15 @@
             `http://localhost/intern/web_intern/public/api/backend/size/update/${userId}`
           )
           .then(function (response) {
-            // Xử lý dữ liệu người dùng được trả về từ máy chủ
-            const user = response.data; // Giả sử dữ liệu người dùng trả về có cấu trúc { name, email, password }
+           
+            const user = response.data; 
             userData.name = user.name;
             
           })
           .catch(function (error) {
-            // Xử lý lỗi
             console.log(error);
           });
       };
-  
-      // Gọi hàm để lấy dữ liệu người dùng khi component được tạo
       onMounted(() => {
         getUserData();
       });
